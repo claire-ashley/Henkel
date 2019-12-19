@@ -1,0 +1,23 @@
+[GENERAL]
+module = 'model.projectModel'
+class = 'ProjectModel'
+filename = u'project\\property.txt'
+[ATTRIBUTES]
+name = 'project'
+nodesInfo = [('CAN_line', 'CanLineModel'), (u'CANVIEW4', 'DeviceModel'), (u'SICK_Inclinometer', 'DeviceJ1939Model'), (u'CANVIEW4_Lib', 'LibraryModel')]
+version = '0.0.0.0'
+documentation = 'enter project description here'
+historyLog = 'enter history log here'
+debug_PC_SA = 128
+debug_PC_NetName = '250'
+debug_CAN_line = 'CAN_line'
+debug_PC_NetHardware = 'PCAN-USB'
+customer_id = ['A644', '', '', '']
+access_level = [100, 0, 0, 0]
+alarm_repetitions = [('', ''), ('', ''), ('', ''), ('', ''), ('', ''), ('', ''), ('', ''), ('', ''), ('', ''), ('', ''), ('', ''), ('', ''), ('', ''), ('', ''), ('', ''), ('', '')]
+bigfile_format_dont_ask_again = False
+elog_cfg = []
+[alarm_priority]
+[alarm_spn]
+[alarm_fmi]
+[alarm_group]

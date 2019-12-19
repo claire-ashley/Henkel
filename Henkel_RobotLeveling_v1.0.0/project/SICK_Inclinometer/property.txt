@@ -1,0 +1,84 @@
+[GENERAL]
+bigfile = 1
+module = 'model.deviceJ1939Model'
+class = 'DeviceJ1939Model'
+filename = u'project\\SICK_Inclinometer\\property.txt'
+[ATTRIBUTES]
+name = u'SICK_Inclinometer'
+
+<childs fullname="/project/SICK_Inclinometer">
+
+<node fullname="/project/SICK_Inclinometer/CAN_interface">
+
+[GENERAL]
+bigfile = 1
+module = 'model.can.canInterfaceModel'
+class = 'CanInterfaceModel'
+[ATTRIBUTES]
+name = 'CAN_interface'
+connection = 'CAN_line'
+port_number = 0
+j1939_source_address = 5
+whitelist = []
+last_excel_import_export_filename = ''
+j1939_name = 'FFFFFFFFFFFFFFFF'
+
+<childs fullname="/project/SICK_Inclinometer/CAN_interface">
+
+<node fullname="/project/SICK_Inclinometer/CAN_interface/Angle">
+
+[GENERAL]
+bigfile = 1
+module = 'model.can.canMsgModel'
+class = 'CanMsgModel'
+[ATTRIBUTES]
+name = u'Angle'
+id = 389
+id_hex = u'185'
+dlc = 4
+dlcMin = 4
+ext = False
+rate = 1000
+alm_tout = 1500
+alm_off_cnt = 3
+alm_on_cnt = 1
+byte_base = 0
+varname_prefix = u'AGL_'
+mux = 0
+muxpos = 0
+muxid = 0
+is_tx_synchronous = False
+[CAN_VARIABLES]
+count = 2
+[CAN_VARIABLE_0]
+name = u'longitudinal'
+vartype = u'INT'
+bytepos = 0
+bitpos = 0
+bitlength = 16
+endianness = u'LE'
+offset = 0
+mul = 1
+div = 1
+init = '0'
+comment = u''
+[CAN_VARIABLE_1]
+name = u'lateral'
+vartype = u'INT'
+bytepos = 2
+bitpos = 0
+bitlength = 16
+endianness = u'LE'
+offset = 0
+mul = 1
+div = 1
+init = '0'
+comment = u''
+
+</node fullname="/project/SICK_Inclinometer/CAN_interface/Angle">
+
+</childs fullname="/project/SICK_Inclinometer/CAN_interface">
+
+</node fullname="/project/SICK_Inclinometer/CAN_interface">
+
+</childs fullname="/project/SICK_Inclinometer">

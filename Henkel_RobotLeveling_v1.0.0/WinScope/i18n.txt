@@ -1,0 +1,9 @@
+# file:       i18n.txt
+
+[GENERAL]
+CLASS = TranslationTable
+
+[LANGUAGES]
+LANG =
+
+# end of file

@@ -1,0 +1,1393 @@
+[GENERAL]
+bigfile = 1
+module = 'model.library'
+class = 'LibraryModel'
+filename = u'project\\CANVIEW4_Lib\\property.txt'
+[ATTRIBUTES]
+name = u'CANVIEW4_Lib'
+library_comment = u'CANVIEW4 specific library:\n\n - 1.0.0.0 - Implemented functions for management SERIAL of CANVIEW4 (VT3 STRING);\n\n - 1.0.0.1 - Implemented functions for management USB, POWER and UPDATE of CANVIEW4;\n\n - 1.0.0.2 - Update functions for management USB, POWER and UPDATE of CANVIEW4;\n\n - 1.0.0.3 - Update functions for management SERIAL boud rate of CANVIEW4;\n\n - 1.0.0.4 - Update functions for management USB read of CANVIEW4;\n\n - 1.0.0.5 - Update functions for management USB;\n\n - 1.0.0.6 - Add CANVIEW4_T;\n\n - 1.0.0.7 - Improved the comment for PowerOff and SetKeyMode function;\n\n - 1.0.0.8 - Improved the comment for management USB;\n\n - 1.0.0.9 - Implemented functions for management SERIAL of CANVIEW4 (BYTE ARRAY);\n\n - 1.0.0.10 - Update functions for management SERIAL of CANVIEW4 (reset buffer);\n\n\n'
+version = u'1.0.0.10'
+build_number = 188
+build_date_time = "'2019-05-06-10.02.56'"
+build_username = 'luca.grossi'
+runtime_targets = ['CANVIEW4', 'CANVIEW4_T']
+device_use = [u'CANVIEW4']
+codegen_version = 1
+vt3_version = '8.9.2.0-DEVELOP'
+source = 0
+
+<childs fullname="/project/CANVIEW4_Lib">
+
+<node fullname="/project/CANVIEW4_Lib/SERIAL">
+
+[GENERAL]
+bigfile = 1
+module = 'model.folderModel'
+class = 'FolderModel'
+[ATTRIBUTES]
+name = u'SERIAL'
+documentation = u' ================================\n ======   Implemented SERIAL utility   ======\n ================================\n\t\n                1) initCOM: \tinitialize SERIAL;\n                2) writeCOM: \twrite on SERIAL;\n                3) readCOM: \tread to SERIAL;\n                4) resetBufferCOM: \treset buffer SERIAL;'
+private = False
+
+<childs fullname="/project/CANVIEW4_Lib/SERIAL">
+
+<node fullname="/project/CANVIEW4_Lib/SERIAL/initCOM">
+
+[GENERAL]
+bigfile = 1
+module = 'model.folderModel'
+class = 'FolderModel'
+[ATTRIBUTES]
+name = u'initCOM'
+documentation = u' ========================================\n ======    Implemented utility to initialize SERIAL   ======\n ========================================\n                \n                Description: \tInittialize SERIAL;\n\t\t\t\t\n                Parameters:\t                   Baud:     Baud in bps;\n                                                        Parity:    PARITY__NONE or PARITY__ODD or PARITY__EVEN;\n                                                        Bits:        The length of the data can be 8 or 9 bits;\n\n                Return:\t\tresult:     Error code;\n\n ================================\n ===== Example to testing this function =====\n ================================\n\n                // Global data\n                return_init                  ENUM_UART_ERR\n\nST:\n                initCOM.Baud := 9600;\n                initCOM.Bits := 8;\n                initCOM.Parity := PARITY__NONE;\n                initCOM;\n                return_init := initCOM.result;\n\nFBD:\n                Use the corresponding block;\n\n'
+private = False
+
+<childs fullname="/project/CANVIEW4_Lib/SERIAL/initCOM">
+
+<node fullname="/project/CANVIEW4_Lib/SERIAL/initCOM/initCOM">
+
+[GENERAL]
+bigfile = 1
+module = 'model.POU_Model'
+class = 'POU_PROGRAM'
+[ATTRIBUTES]
+name = u'initCOM'
+pou_type = 'PROGRAM'
+body_language = 'C'
+pou_comment = u'Initializes port UART '
+last_excel_import_export_filename = ''
+[VARIABLES]
+count = 4
+[VAR_0]
+name = u'Baud'
+vartype = u'UDINT'
+address = ''
+alias = False
+init = u'9600'
+inp = True
+out = False
+temp = False
+constant = False
+comment = u'Baud in bps'
+winscope_min = ''
+winscope_max = ''
+winscope_unit = ''
+winscope_scale = ''
+winscope_offset = ''
+winscope_access_read = ''
+winscope_access_write = ''
+[VAR_1]
+name = u'Parity'
+vartype = u'ENUM_PARITY'
+address = ''
+alias = False
+init = u'PARITY__NONE'
+inp = True
+out = False
+temp = False
+constant = False
+comment = u'PARITY__NONE or PARITY__ODD or PARITY__EVEN'
+winscope_min = ''
+winscope_max = ''
+winscope_unit = ''
+winscope_scale = ''
+winscope_offset = ''
+winscope_access_read = ''
+winscope_access_write = ''
+[VAR_2]
+name = u'Bits'
+vartype = u'USINT'
+address = ''
+alias = False
+init = u'8'
+inp = True
+out = False
+temp = False
+constant = False
+comment = u'The length of the data can be 8 or 9 bits'
+winscope_min = ''
+winscope_max = ''
+winscope_unit = ''
+winscope_scale = ''
+winscope_offset = ''
+winscope_access_read = ''
+winscope_access_write = ''
+[VAR_3]
+name = u'result'
+vartype = u'ENUM_UART_ERR'
+address = ''
+alias = False
+init = u'0'
+inp = False
+out = True
+temp = False
+constant = False
+comment = u'Return of function'
+winscope_min = ''
+winscope_max = ''
+winscope_unit = ''
+winscope_scale = ''
+winscope_offset = ''
+winscope_access_read = ''
+winscope_access_write = ''
+
+</node fullname="/project/CANVIEW4_Lib/SERIAL/initCOM/initCOM">
+
+</childs fullname="/project/CANVIEW4_Lib/SERIAL/initCOM">
+
+</node fullname="/project/CANVIEW4_Lib/SERIAL/initCOM">
+
+<node fullname="/project/CANVIEW4_Lib/SERIAL/writeCOM">
+
+[GENERAL]
+bigfile = 1
+module = 'model.folderModel'
+class = 'FolderModel'
+[ATTRIBUTES]
+name = u'writeCOM'
+documentation = u' ========================================\n ======    Implemented utility to write on SERIAL   ======\n ========================================\n\t\n                1) writeStringCOM: \tWrite VT3 STRING on SERIAL\n                2) writeByteCOM: \tWrite byte array on SERIAL\n\n\n\n\n\n'
+private = False
+
+<childs fullname="/project/CANVIEW4_Lib/SERIAL/writeCOM">
+
+<node fullname="/project/CANVIEW4_Lib/SERIAL/writeCOM/writeStringCOM">
+
+[GENERAL]
+bigfile = 1
+module = 'model.folderModel'
+class = 'FolderModel'
+[ATTRIBUTES]
+name = u'writeStringCOM'
+documentation = u' ========================================\n ======    Implemented utility to write on SERIAL   ======\n ========================================\n\n                Description: \tWrite VT3 STRING on SERIAL\n\t\t\t\t\n                Parameters:\t                   InDataBufferTX_serial:                         Data to send on SERIAL (max 50 char of VT3 STRING);\n\n                Return:\t\tresult:                                                     Error code;\n\n ================================\n ===== Example to testing this function =====\n ================================\n\n The example is available on specific manual\n\n\n\n\n\n\n'
+private = False
+
+<childs fullname="/project/CANVIEW4_Lib/SERIAL/writeCOM/writeStringCOM">
+
+<node fullname="/project/CANVIEW4_Lib/SERIAL/writeCOM/writeStringCOM/writeStringCOM">
+
+[GENERAL]
+bigfile = 1
+module = 'model.POU_Model'
+class = 'POU_PROGRAM'
+[ATTRIBUTES]
+name = u'writeStringCOM'
+pou_type = 'PROGRAM'
+body_language = 'C'
+pou_comment = u'Write VT3 STRING on SERIAL'
+last_excel_import_export_filename = ''
+[VARIABLES]
+count = 2
+[VAR_0]
+name = u'InDataBufferTX_serial'
+vartype = u'STRING(50)'
+address = ''
+alias = False
+init = u''
+inp = True
+out = False
+temp = False
+constant = False
+comment = u'Data to send on SERIAL'
+winscope_min = ''
+winscope_max = ''
+winscope_unit = ''
+winscope_scale = ''
+winscope_offset = ''
+winscope_access_read = ''
+winscope_access_write = ''
+[VAR_1]
+name = u'result'
+vartype = u'ENUM_UART_ERR'
+address = ''
+alias = False
+init = u'0'
+inp = False
+out = True
+temp = False
+constant = False
+comment = u'Return of function'
+winscope_min = ''
+winscope_max = ''
+winscope_unit = ''
+winscope_scale = ''
+winscope_offset = ''
+winscope_access_read = ''
+winscope_access_write = ''
+
+</node fullname="/project/CANVIEW4_Lib/SERIAL/writeCOM/writeStringCOM/writeStringCOM">
+
+</childs fullname="/project/CANVIEW4_Lib/SERIAL/writeCOM/writeStringCOM">
+
+</node fullname="/project/CANVIEW4_Lib/SERIAL/writeCOM/writeStringCOM">
+
+<node fullname="/project/CANVIEW4_Lib/SERIAL/writeCOM/writeByteCOM">
+
+[GENERAL]
+bigfile = 1
+module = 'model.folderModel'
+class = 'FolderModel'
+[ATTRIBUTES]
+name = u'writeByteCOM'
+documentation = u' ========================================\n ======    Implemented utility to write on SERIAL   ======\n ========================================\n\n                Description: \tWrite byte array on SERIAL\n\t\t\t\t\n                Parameters:\t                   InDataBufferTX_serial:                         Data to send on SERIAL (max 50 byte);\n\n                Return:\t\tresult:                                                     Error code;\n\n ================================\n ===== Example to testing this function =====\n ================================\n\n The example is available on specific manual\n\n\n\n\n\n\n'
+private = False
+
+<childs fullname="/project/CANVIEW4_Lib/SERIAL/writeCOM/writeByteCOM">
+
+<node fullname="/project/CANVIEW4_Lib/SERIAL/writeCOM/writeByteCOM/writeByteCOM">
+
+[GENERAL]
+bigfile = 1
+module = 'model.POU_Model'
+class = 'POU_PROGRAM'
+[ATTRIBUTES]
+name = u'writeByteCOM'
+pou_type = 'PROGRAM'
+body_language = 'C'
+pou_comment = u'Write byte array on SERIAL'
+last_excel_import_export_filename = ''
+[VARIABLES]
+count = 2
+[VAR_0]
+name = u'InDataBufferTX_serial'
+vartype = u'DATA_ARRAY_50'
+address = ''
+alias = False
+init = u''
+inp = True
+out = False
+temp = False
+constant = False
+comment = u'Data to send on SERIAL'
+winscope_min = ''
+winscope_max = ''
+winscope_unit = ''
+winscope_scale = ''
+winscope_offset = ''
+winscope_access_read = ''
+winscope_access_write = ''
+[VAR_1]
+name = u'result'
+vartype = u'ENUM_UART_ERR'
+address = ''
+alias = False
+init = u'0'
+inp = False
+out = True
+temp = False
+constant = False
+comment = u'Return of function'
+winscope_min = ''
+winscope_max = ''
+winscope_unit = ''
+winscope_scale = ''
+winscope_offset = ''
+winscope_access_read = ''
+winscope_access_write = ''
+
+</node fullname="/project/CANVIEW4_Lib/SERIAL/writeCOM/writeByteCOM/writeByteCOM">
+
+</childs fullname="/project/CANVIEW4_Lib/SERIAL/writeCOM/writeByteCOM">
+
+</node fullname="/project/CANVIEW4_Lib/SERIAL/writeCOM/writeByteCOM">
+
+</childs fullname="/project/CANVIEW4_Lib/SERIAL/writeCOM">
+
+</node fullname="/project/CANVIEW4_Lib/SERIAL/writeCOM">
+
+<node fullname="/project/CANVIEW4_Lib/SERIAL/readCOM">
+
+[GENERAL]
+bigfile = 1
+module = 'model.folderModel'
+class = 'FolderModel'
+[ATTRIBUTES]
+name = u'readCOM'
+documentation = u' ========================================\n ======    Implemented utility to read on SERIAL   ======\n ========================================\n\n                1) readStringCOM: \tRead VT3 STRING on SERIAL\n                2) readByteCOM: \tRead byte array on SERIAL'
+private = False
+
+<childs fullname="/project/CANVIEW4_Lib/SERIAL/readCOM">
+
+<node fullname="/project/CANVIEW4_Lib/SERIAL/readCOM/readStringCOM">
+
+[GENERAL]
+bigfile = 1
+module = 'model.folderModel'
+class = 'FolderModel'
+[ATTRIBUTES]
+name = u'readStringCOM'
+documentation = u' ========================================\n ======    Implemented utility to read on SERIAL   ======\n ========================================\n\n                Description: \tRead VT3 STRING on SERIAL\n\n                Return:\t\tOutBufferDataRX_serial\tData to receive on SERIAL (max 255 of size VT3 STRING);\n                                                        index_buffer_serial\t                   Index buffer;\n\n ================================\n ===== Example to testing this function =====\n ================================\n\n The example is available on specific manual\n'
+private = False
+
+<childs fullname="/project/CANVIEW4_Lib/SERIAL/readCOM/readStringCOM">
+
+<node fullname="/project/CANVIEW4_Lib/SERIAL/readCOM/readStringCOM/readStringCOM">
+
+[GENERAL]
+bigfile = 1
+module = 'model.POU_Model'
+class = 'POU_PROGRAM'
+[ATTRIBUTES]
+name = u'readStringCOM'
+pou_type = 'PROGRAM'
+body_language = 'C'
+pou_comment = u'Read VT3 STRING on SERIAL'
+last_excel_import_export_filename = ''
+[VARIABLES]
+count = 2
+[VAR_0]
+name = u'OutBufferDataRX_serial'
+vartype = u'STRING(255)'
+address = ''
+alias = False
+init = u''
+inp = False
+out = True
+temp = False
+constant = False
+comment = u'Data to receive on SERIAL'
+winscope_min = ''
+winscope_max = ''
+winscope_unit = ''
+winscope_scale = ''
+winscope_offset = ''
+winscope_access_read = ''
+winscope_access_write = ''
+[VAR_1]
+name = u'index_buffer_serial'
+vartype = u'UINT'
+address = ''
+alias = False
+init = u'0'
+inp = False
+out = True
+temp = False
+constant = False
+comment = u'Index buffer receive on SERIAL'
+winscope_min = ''
+winscope_max = ''
+winscope_unit = ''
+winscope_scale = ''
+winscope_offset = ''
+winscope_access_read = ''
+winscope_access_write = ''
+
+</node fullname="/project/CANVIEW4_Lib/SERIAL/readCOM/readStringCOM/readStringCOM">
+
+</childs fullname="/project/CANVIEW4_Lib/SERIAL/readCOM/readStringCOM">
+
+</node fullname="/project/CANVIEW4_Lib/SERIAL/readCOM/readStringCOM">
+
+<node fullname="/project/CANVIEW4_Lib/SERIAL/readCOM/readByteCOM">
+
+[GENERAL]
+bigfile = 1
+module = 'model.folderModel'
+class = 'FolderModel'
+[ATTRIBUTES]
+name = u'readByteCOM'
+documentation = u' ========================================\n ======    Implemented utility to read on SERIAL   ======\n ========================================\n\n                Description: \tRead byte array on SERIAL\n\n                Return:\t\tOutBufferDataRX_serial\tData to receive on SERIAL (max 255 byte);\n                                                        index_buffer_serial\t                   Index buffer;\n\n ================================\n ===== Example to testing this function =====\n ================================\n\n The example is available on specific manual\n'
+private = False
+
+<childs fullname="/project/CANVIEW4_Lib/SERIAL/readCOM/readByteCOM">
+
+<node fullname="/project/CANVIEW4_Lib/SERIAL/readCOM/readByteCOM/readByteCOM">
+
+[GENERAL]
+bigfile = 1
+module = 'model.POU_Model'
+class = 'POU_PROGRAM'
+[ATTRIBUTES]
+name = u'readByteCOM'
+pou_type = 'PROGRAM'
+body_language = 'C'
+pou_comment = u'Read byte array on SERIAL'
+last_excel_import_export_filename = ''
+[VARIABLES]
+count = 2
+[VAR_0]
+name = u'OutBufferDataRX_serial'
+vartype = u'DATA_ARRAY_255'
+address = ''
+alias = False
+init = u''
+inp = False
+out = True
+temp = False
+constant = False
+comment = u'Data to receive on SERIAL'
+winscope_min = ''
+winscope_max = ''
+winscope_unit = ''
+winscope_scale = ''
+winscope_offset = ''
+winscope_access_read = ''
+winscope_access_write = ''
+[VAR_1]
+name = u'index_buffer_serial'
+vartype = u'UINT'
+address = ''
+alias = False
+init = u'0'
+inp = False
+out = True
+temp = False
+constant = False
+comment = u'Index buffer receive on SERIAL'
+winscope_min = ''
+winscope_max = ''
+winscope_unit = ''
+winscope_scale = ''
+winscope_offset = ''
+winscope_access_read = ''
+winscope_access_write = ''
+
+</node fullname="/project/CANVIEW4_Lib/SERIAL/readCOM/readByteCOM/readByteCOM">
+
+</childs fullname="/project/CANVIEW4_Lib/SERIAL/readCOM/readByteCOM">
+
+</node fullname="/project/CANVIEW4_Lib/SERIAL/readCOM/readByteCOM">
+
+</childs fullname="/project/CANVIEW4_Lib/SERIAL/readCOM">
+
+</node fullname="/project/CANVIEW4_Lib/SERIAL/readCOM">
+
+<node fullname="/project/CANVIEW4_Lib/SERIAL/resetBufferCOM">
+
+[GENERAL]
+bigfile = 1
+module = 'model.folderModel'
+class = 'FolderModel'
+[ATTRIBUTES]
+name = u'resetBufferCOM'
+documentation = u' ==========================================\n ======    Implemented utility to reset buffer SERIAL   ======\n ==========================================\n\n                Description: \tReset buffer SERIAL;\n\n ================================\n ===== Example to testing this function =====\n ================================\n\nST:\n                resetBufferCOM;\n\nFBD:\n                Use the corresponding block;\n'
+private = False
+
+<childs fullname="/project/CANVIEW4_Lib/SERIAL/resetBufferCOM">
+
+<node fullname="/project/CANVIEW4_Lib/SERIAL/resetBufferCOM/resetBufferCOM">
+
+[GENERAL]
+bigfile = 1
+module = 'model.POU_Model'
+class = 'POU_PROGRAM'
+[ATTRIBUTES]
+name = u'resetBufferCOM'
+pou_type = 'PROGRAM'
+body_language = 'C'
+pou_comment = u'Reset buffer SERIAL'
+last_excel_import_export_filename = ''
+[VARIABLES]
+count = 0
+
+</node fullname="/project/CANVIEW4_Lib/SERIAL/resetBufferCOM/resetBufferCOM">
+
+</childs fullname="/project/CANVIEW4_Lib/SERIAL/resetBufferCOM">
+
+</node fullname="/project/CANVIEW4_Lib/SERIAL/resetBufferCOM">
+
+<node fullname="/project/CANVIEW4_Lib/SERIAL/Type">
+
+[GENERAL]
+bigfile = 1
+module = 'model.folderModel'
+class = 'FolderModel'
+[ATTRIBUTES]
+name = u'Type'
+documentation = u' ====================================\n ======    Implemented variable to SERIAL   ======\n ====================================\n\n                1) Enumerations; \n                2) Data array;\n'
+private = False
+
+<childs fullname="/project/CANVIEW4_Lib/SERIAL/Type">
+
+<node fullname="/project/CANVIEW4_Lib/SERIAL/Type/ENUM_PARITY">
+
+[GENERAL]
+bigfile = 1
+module = 'model.typedefModel'
+class = 'TypedefModel'
+[ATTRIBUTES]
+name = u'ENUM_PARITY'
+
+<typedef fullname="/project/CANVIEW4_Lib/SERIAL/Type/ENUM_PARITY">
+
+
+(
+    PARITY__NONE     :=      0,   (* No type of parity, no bit added *)
+    PARITY__ODD      :=      1,   (* The number of mark, including the parity bit, is always odd *)
+    PARITY__EVEN     :=      2    (* The number of mark, including the parity bit, is always even *)
+)
+
+
+
+</typedef fullname="/project/CANVIEW4_Lib/SERIAL/Type/ENUM_PARITY">
+
+</node fullname="/project/CANVIEW4_Lib/SERIAL/Type/ENUM_PARITY">
+
+<node fullname="/project/CANVIEW4_Lib/SERIAL/Type/ENUM_UART_ERR">
+
+[GENERAL]
+bigfile = 1
+module = 'model.typedefModel'
+class = 'TypedefModel'
+[ATTRIBUTES]
+name = u'ENUM_UART_ERR'
+
+<typedef fullname="/project/CANVIEW4_Lib/SERIAL/Type/ENUM_UART_ERR">
+
+
+(
+    UART__OK                 :=      0,   (* No error *)
+    UART__ERR                :=      1,   (* Generic error *)
+    UART__TX_ERR             :=      2,   (* Error TX *)
+    UART__RX_ERR             :=      3,   (* Error RX *)
+    UART__P_OUT_OF_RANGE     :=      4    (* Error out of range *)
+)
+
+
+</typedef fullname="/project/CANVIEW4_Lib/SERIAL/Type/ENUM_UART_ERR">
+
+</node fullname="/project/CANVIEW4_Lib/SERIAL/Type/ENUM_UART_ERR">
+
+<node fullname="/project/CANVIEW4_Lib/SERIAL/Type/DATA_ARRAY_50">
+
+[GENERAL]
+bigfile = 1
+module = 'model.typedefModel'
+class = 'TypedefModel'
+[ATTRIBUTES]
+name = u'DATA_ARRAY_50'
+
+<typedef fullname="/project/CANVIEW4_Lib/SERIAL/Type/DATA_ARRAY_50">
+
+
+ARRAY [0..49] OF BYTE
+
+
+</typedef fullname="/project/CANVIEW4_Lib/SERIAL/Type/DATA_ARRAY_50">
+
+</node fullname="/project/CANVIEW4_Lib/SERIAL/Type/DATA_ARRAY_50">
+
+<node fullname="/project/CANVIEW4_Lib/SERIAL/Type/DATA_ARRAY_255">
+
+[GENERAL]
+bigfile = 1
+module = 'model.typedefModel'
+class = 'TypedefModel'
+[ATTRIBUTES]
+name = u'DATA_ARRAY_255'
+
+<typedef fullname="/project/CANVIEW4_Lib/SERIAL/Type/DATA_ARRAY_255">
+
+
+ARRAY [0..254] OF BYTE
+
+
+</typedef fullname="/project/CANVIEW4_Lib/SERIAL/Type/DATA_ARRAY_255">
+
+</node fullname="/project/CANVIEW4_Lib/SERIAL/Type/DATA_ARRAY_255">
+
+</childs fullname="/project/CANVIEW4_Lib/SERIAL/Type">
+
+</node fullname="/project/CANVIEW4_Lib/SERIAL/Type">
+
+</childs fullname="/project/CANVIEW4_Lib/SERIAL">
+
+</node fullname="/project/CANVIEW4_Lib/SERIAL">
+
+<node fullname="/project/CANVIEW4_Lib/USB">
+
+[GENERAL]
+bigfile = 1
+module = 'model.folderModel'
+class = 'FolderModel'
+[ATTRIBUTES]
+name = u'USB'
+documentation = u' ================================\n =======   Implemented USB utility   =======\n ================================\n\t\n                1) mountUSB: \tUSB device mount;\n                2) umountUSB: \tUSB device unmount;\n                3) openUSB: \tOpen file on the USB root;\n                4) closeUSB: \tClose file on the USB root;\n                5) readStringUSB:          Read a sequence of bytes from file;\n                6) writeStringUSB:         Write a sequence of bytes from file;\n                7) writeElogUSB:            Write event log on USB;'
+private = False
+
+<childs fullname="/project/CANVIEW4_Lib/USB">
+
+<node fullname="/project/CANVIEW4_Lib/USB/mountUSB">
+
+[GENERAL]
+bigfile = 1
+module = 'model.folderModel'
+class = 'FolderModel'
+[ATTRIBUTES]
+name = u'mountUSB'
+documentation = u' =================================================\n ======    Implemented utility to mount/unmount USB device   ======\n =================================================\n\n                Description: \tUSB device mount/unmount;\n\t\t\t\t\n                Parameters:\t                   none;\n\n                Return:\t\t result:       \t                    ENUM_USB_ERR;\n\n ================================\n ===== Example to testing this function =====\n ================================\n\n                // Global data\n                mod_mount_file               SINT                            0\n                return_usb\t                       ENUM_USB_ERR       0\n\nST:\n                // Modality for mount/umount driver\n                IF mod_mount_file = 1 THEN\n    \n                    // Mount driver\n                    mountUSB;\n                    return_usb := mountUSB.result;\n                    mod_mount_file := 0;\n        \n                ELSIF mod_mount_file = 2 THEN\n        \n                    // Mount driver\n                    umountUSB;\n                    return_usb := umountUSB.result;\n                    mod_mount_file := 0;\n        \n                END_IF\n\nFBD:\n                Use the corresponding block;\n'
+private = False
+
+<childs fullname="/project/CANVIEW4_Lib/USB/mountUSB">
+
+<node fullname="/project/CANVIEW4_Lib/USB/mountUSB/mountUSB">
+
+[GENERAL]
+bigfile = 1
+module = 'model.POU_Model'
+class = 'POU_PROGRAM'
+[ATTRIBUTES]
+name = u'mountUSB'
+pou_type = 'PROGRAM'
+body_language = 'C'
+pou_comment = u'USB device mount'
+last_excel_import_export_filename = ''
+[VARIABLES]
+count = 1
+[VAR_0]
+name = u'result'
+vartype = u'ENUM_USB_ERR'
+address = ''
+alias = False
+init = u''
+inp = False
+out = True
+temp = False
+constant = False
+comment = u'Return of function'
+winscope_min = ''
+winscope_max = ''
+winscope_unit = ''
+winscope_scale = ''
+winscope_offset = ''
+winscope_access_read = ''
+winscope_access_write = ''
+
+</node fullname="/project/CANVIEW4_Lib/USB/mountUSB/mountUSB">
+
+<node fullname="/project/CANVIEW4_Lib/USB/mountUSB/umountUSB">
+
+[GENERAL]
+bigfile = 1
+module = 'model.POU_Model'
+class = 'POU_PROGRAM'
+[ATTRIBUTES]
+name = u'umountUSB'
+pou_type = 'PROGRAM'
+body_language = 'C'
+pou_comment = u'USB device unmount'
+last_excel_import_export_filename = ''
+[VARIABLES]
+count = 1
+[VAR_0]
+name = u'result'
+vartype = u'ENUM_USB_ERR'
+address = ''
+alias = False
+init = u''
+inp = False
+out = True
+temp = False
+constant = False
+comment = u'Return of function'
+winscope_min = ''
+winscope_max = ''
+winscope_unit = ''
+winscope_scale = ''
+winscope_offset = ''
+winscope_access_read = ''
+winscope_access_write = ''
+
+</node fullname="/project/CANVIEW4_Lib/USB/mountUSB/umountUSB">
+
+</childs fullname="/project/CANVIEW4_Lib/USB/mountUSB">
+
+</node fullname="/project/CANVIEW4_Lib/USB/mountUSB">
+
+<node fullname="/project/CANVIEW4_Lib/USB/openUSB">
+
+[GENERAL]
+bigfile = 1
+module = 'model.folderModel'
+class = 'FolderModel'
+[ATTRIBUTES]
+name = u'openUSB'
+documentation = u" ==================================================\n ======    Implemented utility to open/close file on the USB root   ======\n ==================================================\n\n                Description: \tOpen/close file on the USB root;\n\t\t\t\t\n                Parameters:\t                   fname:                                             pointer to the char array that contains the file name;\n                                                        option:                                             FA_OPEN_EXISTING_READ:         If file exists open it read, error if file does not exist\n                                                                                                                  FA_OPEN_EXISTING_WRITE:       If file exists open it in writing, error if file does not exist\n                                                                                                                  FA_OPEN_ALWAYS_WRITE:        If file exists it open in writing, if file does not exist create it\n                                                                                                                  FA_CREATE_NEW_WRITE:           If file does not exist open in writing, error if file exists\n                                                                                                                  FA_CREATE_ALWAYS_WRITE:    If file does not exist open in writing, if file exists overwrite it\n                Return:\t\t result:       \t                    ENUM_USB_ERR;\n\n                Note:                               After using the write modality, you have to close the file and then you can unmount the USB.\n                                                         Otherwise when you go to read that file, it will be empty.\n\n ================================\n ===== Example to testing this function =====\n ================================\n\n                // Global data\n                mod_option_open_file     SINT                              0\n                NameFile_usb                    STRING(20)                  'fileTestVT3.txt'\n                return_usb                          ENUM_USB_ERR          0\n\nST:\n                // Modality for open/close file\n                IF mod_open_file = 1 THEN\n    \n                     // Open file \n                     openUSB.fname := NameFile_usb;\n                     \n                     // Function to open USB\n                    CASE mod_option_open_file OF\n                         0:\n                               // If file exists open it read, error if file does not exist (1)\n                               openUSB.option := FA_OPEN_EXISTING_READ;\n                         1:\n                               // If file exists open it in writing, error if file does not exist (2)\n                               openUSB.option := FA_OPEN_EXISTING_WRITE;\n                         2:\n                               // If file exists it open in reading, if file does not exist create it (17)\n                               openUSB.option := FA_OPEN_ALWAYS_READ;\n                         3:\n                               // If file exists it open in writing, if file does not exist create it (18)\n                               openUSB.option := FA_OPEN_ALWAYS_WRITE;\n                         4:\n                               // If file does not exist open in writing, error if file exists (6)\n                               openUSB.option := FA_CREATE_NEW_WRITE;\n                         5:\n                               // If file does not exist open in writing, if file exists overwrite it (10)\n                               openUSB.option := FA_CREATE_ALWAYS_WRITE;\n                     END_CASE\n\n                     openUSB;\n                     return_usb := openUSB.result;\n                     mod_open_file := 0;\n\n                ELSIF mod_open_file = 2 THEN\n        \n                     // Close file\n                     closeUSB;\n                     return_usb := closeUSB.result;\n                     mod_open_file := 0;\n        \n                END_IF\n\nFBD:\n                Use the corresponding block;\n"
+private = False
+
+<childs fullname="/project/CANVIEW4_Lib/USB/openUSB">
+
+<node fullname="/project/CANVIEW4_Lib/USB/openUSB/openUSB">
+
+[GENERAL]
+bigfile = 1
+module = 'model.POU_Model'
+class = 'POU_PROGRAM'
+[ATTRIBUTES]
+name = u'openUSB'
+pou_type = 'PROGRAM'
+body_language = 'C'
+pou_comment = u'Open a file on the USB root'
+last_excel_import_export_filename = ''
+[VARIABLES]
+count = 3
+[VAR_0]
+name = u'fname'
+vartype = u'STRING(20)'
+address = ''
+alias = False
+init = u''
+inp = True
+out = False
+temp = False
+constant = False
+comment = u'Pointer to the char array that contains the file name'
+winscope_min = ''
+winscope_max = ''
+winscope_unit = ''
+winscope_scale = ''
+winscope_offset = ''
+winscope_access_read = ''
+winscope_access_write = ''
+[VAR_1]
+name = u'option'
+vartype = u'ENUM_OPEN_FILE'
+address = ''
+alias = False
+init = u''
+inp = True
+out = False
+temp = False
+constant = False
+comment = u'Modality to open file'
+winscope_min = ''
+winscope_max = ''
+winscope_unit = ''
+winscope_scale = ''
+winscope_offset = ''
+winscope_access_read = ''
+winscope_access_write = ''
+[VAR_2]
+name = u'result'
+vartype = u'ENUM_USB_ERR'
+address = ''
+alias = False
+init = u''
+inp = False
+out = True
+temp = False
+constant = False
+comment = u'Return of function'
+winscope_min = ''
+winscope_max = ''
+winscope_unit = ''
+winscope_scale = ''
+winscope_offset = ''
+winscope_access_read = ''
+winscope_access_write = ''
+
+</node fullname="/project/CANVIEW4_Lib/USB/openUSB/openUSB">
+
+<node fullname="/project/CANVIEW4_Lib/USB/openUSB/closeUSB">
+
+[GENERAL]
+bigfile = 1
+module = 'model.POU_Model'
+class = 'POU_PROGRAM'
+[ATTRIBUTES]
+name = u'closeUSB'
+pou_type = 'PROGRAM'
+body_language = 'C'
+pou_comment = u'Close the last opened file'
+last_excel_import_export_filename = ''
+[VARIABLES]
+count = 1
+[VAR_0]
+name = u'result'
+vartype = u'ENUM_USB_ERR'
+address = ''
+alias = False
+init = u''
+inp = False
+out = True
+temp = False
+constant = False
+comment = u'Return of function'
+winscope_min = ''
+winscope_max = ''
+winscope_unit = ''
+winscope_scale = ''
+winscope_offset = ''
+winscope_access_read = ''
+winscope_access_write = ''
+
+</node fullname="/project/CANVIEW4_Lib/USB/openUSB/closeUSB">
+
+</childs fullname="/project/CANVIEW4_Lib/USB/openUSB">
+
+</node fullname="/project/CANVIEW4_Lib/USB/openUSB">
+
+<node fullname="/project/CANVIEW4_Lib/USB/writeUSB">
+
+[GENERAL]
+bigfile = 1
+module = 'model.folderModel'
+class = 'FolderModel'
+[ATTRIBUTES]
+name = u'writeUSB'
+documentation = u" ======================================\n ======    Implemented utility to write on USB   ======\n ======================================\n\n                Description: \tWrite a sequence of bytes from file (a USB_file_open call is request before a read);\n\t\t\t\t\n                Parameters:\t                   dataBufferWrite:                     Pointer to data buffer;\n                                                        lenByteWrite:                           Number of bytes to write;\n\n                Return:\t\tresult:       \t                               ENUM_USB_ERR;\n\n                Note:\t\tAfter using the function WriteStringUSB, you have to close the file and then you can unmount the USB.\n                                                        Otherwise when you go to read that file, it will be empty.\n\n ================================\n ===== Example to testing this function =====\n ================================\n\n                // Global data\n                mod_write_file                                 SINT                              0\n                DataWriteStrBuffLocal_usb\tSTRING(255)\t'MESSAGE WRITE FROM VT3 BY STRING'\n                return_usb                                        ENUM_USB_ERR          0\n\nST:\n               // Modality Write File on USB\n               IF mod_write_file = 1 THEN\n    \n                     // Write STRING\n                     writeStringUSB.dataBufferWrite := DataWriteStrBuffLocal_usb;\n                     writeStringUSB.lenByteWrite := 32;\n                     writeStringUSB;\n                     return_usb := writeStringUSB.result;\n                     mod_write_file := 0;\n        \n               END_IF\n\nFBD:\n                Use the corresponding block;\n"
+private = False
+
+<childs fullname="/project/CANVIEW4_Lib/USB/writeUSB">
+
+<node fullname="/project/CANVIEW4_Lib/USB/writeUSB/writeStringUSB">
+
+[GENERAL]
+bigfile = 1
+module = 'model.POU_Model'
+class = 'POU_PROGRAM'
+[ATTRIBUTES]
+name = u'writeStringUSB'
+pou_type = 'PROGRAM'
+body_language = 'C'
+pou_comment = u'Write a sequence of bytes from file'
+last_excel_import_export_filename = ''
+[VARIABLES]
+count = 3
+[VAR_0]
+name = u'dataBufferWrite'
+vartype = u'STRING(255)'
+address = ''
+alias = False
+init = u''
+inp = True
+out = False
+temp = False
+constant = False
+comment = u'Pointer to data buffer'
+winscope_min = ''
+winscope_max = ''
+winscope_unit = ''
+winscope_scale = ''
+winscope_offset = ''
+winscope_access_read = ''
+winscope_access_write = ''
+[VAR_1]
+name = u'lenByteWrite'
+vartype = u'SINT'
+address = ''
+alias = False
+init = u''
+inp = True
+out = False
+temp = False
+constant = False
+comment = u'Number of bytes to write'
+winscope_min = ''
+winscope_max = ''
+winscope_unit = ''
+winscope_scale = ''
+winscope_offset = ''
+winscope_access_read = ''
+winscope_access_write = ''
+[VAR_2]
+name = u'result'
+vartype = u'ENUM_USB_ERR'
+address = ''
+alias = False
+init = u''
+inp = False
+out = True
+temp = False
+constant = False
+comment = u'Return of function'
+winscope_min = ''
+winscope_max = ''
+winscope_unit = ''
+winscope_scale = ''
+winscope_offset = ''
+winscope_access_read = ''
+winscope_access_write = ''
+
+</node fullname="/project/CANVIEW4_Lib/USB/writeUSB/writeStringUSB">
+
+</childs fullname="/project/CANVIEW4_Lib/USB/writeUSB">
+
+</node fullname="/project/CANVIEW4_Lib/USB/writeUSB">
+
+<node fullname="/project/CANVIEW4_Lib/USB/readUSB">
+
+[GENERAL]
+bigfile = 1
+module = 'model.folderModel'
+class = 'FolderModel'
+[ATTRIBUTES]
+name = u'readUSB'
+documentation = u' ======================================\n ======    Implemented utility to read on USB   ======\n ======================================\n\n                Description: \tRead a sequence of bytes from file (a USB_file_open call is request before a read);\n\t\t\t\t\n                Parameters:\t                   dataBufferRead:\t             Pointer to data buffer;\n                                                        lenByteRead:                            Number of bytes to read;\n\n                Return:\t\tresult:       \t                                ENUM_USB_ERR;\n\n ================================\n ===== Example to testing this function =====\n ================================\n\n                // Global data\n               mod_read_file                                     SINT                             0\n               DataReadStrBuffLocal_usb                STRING(255)               0\n               return_usb                                           ENUM_USB_ERR         0\n\nST:\n               // Modality Read File on USB\n               IF mod_read_file = 1 THEN\n    \n                     // Read STRING\n                     readStringUSB.lenByteRead := 32;\n                     readStringUSB;\n                     DataReadStrBuffLocal_usb := readStringUSB.dataBufferRead;        \n                     return_usb := readStringUSB.result;\n                     mod_read_file := 0;\n        \n               END_IF\n\nFBD:\n                Use the corresponding block;\n\n\n'
+private = False
+
+<childs fullname="/project/CANVIEW4_Lib/USB/readUSB">
+
+<node fullname="/project/CANVIEW4_Lib/USB/readUSB/readStringUSB">
+
+[GENERAL]
+bigfile = 1
+module = 'model.POU_Model'
+class = 'POU_PROGRAM'
+[ATTRIBUTES]
+name = u'readStringUSB'
+pou_type = 'PROGRAM'
+body_language = 'C'
+pou_comment = u'Read a sequence of bytes from file'
+last_excel_import_export_filename = ''
+[VARIABLES]
+count = 3
+[VAR_0]
+name = u'dataBufferRead'
+vartype = u'STRING(255)'
+address = ''
+alias = False
+init = u''
+inp = False
+out = True
+temp = False
+constant = False
+comment = u'Pointer to data buffer'
+winscope_min = ''
+winscope_max = ''
+winscope_unit = ''
+winscope_scale = ''
+winscope_offset = ''
+winscope_access_read = ''
+winscope_access_write = ''
+[VAR_1]
+name = u'lenByteRead'
+vartype = u'SINT'
+address = ''
+alias = False
+init = u''
+inp = True
+out = False
+temp = False
+constant = False
+comment = u'Number of bytes to read'
+winscope_min = ''
+winscope_max = ''
+winscope_unit = ''
+winscope_scale = ''
+winscope_offset = ''
+winscope_access_read = ''
+winscope_access_write = ''
+[VAR_2]
+name = u'result'
+vartype = u'ENUM_USB_ERR'
+address = ''
+alias = False
+init = u''
+inp = False
+out = True
+temp = False
+constant = False
+comment = u'Return of function'
+winscope_min = ''
+winscope_max = ''
+winscope_unit = ''
+winscope_scale = ''
+winscope_offset = ''
+winscope_access_read = ''
+winscope_access_write = ''
+
+</node fullname="/project/CANVIEW4_Lib/USB/readUSB/readStringUSB">
+
+</childs fullname="/project/CANVIEW4_Lib/USB/readUSB">
+
+</node fullname="/project/CANVIEW4_Lib/USB/readUSB">
+
+<node fullname="/project/CANVIEW4_Lib/USB/writeElogUSB">
+
+[GENERAL]
+bigfile = 1
+module = 'model.folderModel'
+class = 'FolderModel'
+[ATTRIBUTES]
+name = u'writeElogUSB'
+documentation = u'======================================\n ======    Implemented utility to write on USB   ======\n ======================================\n\n                Description: \tWrite event log on USB;\n\t\t\t\t\n                Parameters:\t                   none;\n\n                Return:\t\tresult:       \t                               ENUM_USB_ERR;\n\n ================================\n ===== Example to testing this function =====\n ================================\n\n                // Global data\n                mod_write_elog_file                        SINT                              0\n                return_usb                                        ENUM_USB_ERR          0\n\nST:\n              // Modality Write Elog on USB\n              IF mod_write_elog_file = 1 THEN\n    \n                    // Write ELOG\n                    writeElogUSB;\n                    return_usb := writeElogUSB.result;\n                    mod_write_elog_file := 0;\n        \n              END_IF\n\nFBD:\n                Use the corresponding block;\n'
+private = False
+
+<childs fullname="/project/CANVIEW4_Lib/USB/writeElogUSB">
+
+<node fullname="/project/CANVIEW4_Lib/USB/writeElogUSB/writeElogUSB">
+
+[GENERAL]
+bigfile = 1
+module = 'model.POU_Model'
+class = 'POU_PROGRAM'
+[ATTRIBUTES]
+name = u'writeElogUSB'
+pou_type = 'PROGRAM'
+body_language = 'C'
+pou_comment = u'Write event log on USB'
+last_excel_import_export_filename = ''
+[VARIABLES]
+count = 1
+[VAR_0]
+name = u'result'
+vartype = u'ENUM_USB_ERR'
+address = ''
+alias = False
+init = u''
+inp = False
+out = True
+temp = False
+constant = False
+comment = u'Return of function'
+winscope_min = ''
+winscope_max = ''
+winscope_unit = ''
+winscope_scale = ''
+winscope_offset = ''
+winscope_access_read = ''
+winscope_access_write = ''
+
+</node fullname="/project/CANVIEW4_Lib/USB/writeElogUSB/writeElogUSB">
+
+</childs fullname="/project/CANVIEW4_Lib/USB/writeElogUSB">
+
+</node fullname="/project/CANVIEW4_Lib/USB/writeElogUSB">
+
+<node fullname="/project/CANVIEW4_Lib/USB/Type">
+
+[GENERAL]
+bigfile = 1
+module = 'model.folderModel'
+class = 'FolderModel'
+[ATTRIBUTES]
+name = u'Type'
+documentation = u' ====================================\n ======    Implemented variable to SERIAL   ======\n ====================================\n\n                1) Enumerations; '
+private = False
+
+<childs fullname="/project/CANVIEW4_Lib/USB/Type">
+
+<node fullname="/project/CANVIEW4_Lib/USB/Type/ENUM_USB_ERR">
+
+[GENERAL]
+bigfile = 1
+module = 'model.typedefModel'
+class = 'TypedefModel'
+[ATTRIBUTES]
+name = u'ENUM_USB_ERR'
+
+<typedef fullname="/project/CANVIEW4_Lib/USB/Type/ENUM_USB_ERR">
+
+
+(
+    USB__OK   :=  0, (* No error *)
+    USB__ERR  :=  1, (* Generic error *)
+    USB__EOF  :=  2, (* End Of File (EOF) *)
+    USB__EOD  :=  3  (* End Of Disk (EOD) *)
+)
+
+
+
+</typedef fullname="/project/CANVIEW4_Lib/USB/Type/ENUM_USB_ERR">
+
+</node fullname="/project/CANVIEW4_Lib/USB/Type/ENUM_USB_ERR">
+
+<node fullname="/project/CANVIEW4_Lib/USB/Type/ENUM_OPEN_FILE">
+
+[GENERAL]
+bigfile = 1
+module = 'model.typedefModel'
+class = 'TypedefModel'
+[ATTRIBUTES]
+name = u'ENUM_OPEN_FILE'
+
+<typedef fullname="/project/CANVIEW4_Lib/USB/Type/ENUM_OPEN_FILE">
+
+
+(
+    FA_OPEN_EXISTING_READ   := 0x01, (* If file exists open it read, error if file does not exist *)
+    FA_OPEN_EXISTING_WRITE  := 0x02, (* If file exists open it in writing, error if file does not exist *)
+    FA_OPEN_ALWAYS_READ     := 0x11, (* If file exists it open in reading, if file does not exist create it *)
+    FA_OPEN_ALWAYS_WRITE    := 0x12, (* If file exists it open in writing, if file does not exist create it *)
+    FA_CREATE_NEW_WRITE     := 0x06, (* If file does not exist open in writing, error if file exists *)
+    FA_CREATE_ALWAYS_WRITE  := 0x0A  (* If file does not exist open in writing, if file exists overwrite it *)
+)
+
+
+</typedef fullname="/project/CANVIEW4_Lib/USB/Type/ENUM_OPEN_FILE">
+
+</node fullname="/project/CANVIEW4_Lib/USB/Type/ENUM_OPEN_FILE">
+
+</childs fullname="/project/CANVIEW4_Lib/USB/Type">
+
+</node fullname="/project/CANVIEW4_Lib/USB/Type">
+
+</childs fullname="/project/CANVIEW4_Lib/USB">
+
+</node fullname="/project/CANVIEW4_Lib/USB">
+
+<node fullname="/project/CANVIEW4_Lib/MANAGEMENT">
+
+[GENERAL]
+bigfile = 1
+module = 'model.folderModel'
+class = 'FolderModel'
+[ATTRIBUTES]
+name = u'MANAGEMENT'
+documentation = u' =================================\n =======   Management CANVIEW4   =======\n =================================\n\t\n                1) SetKeyMode: \tSet the behaviour at KEY falling edge;\n                2) PowerOff: \tSwitch off the 5V switch regulator using the CAN1 transceiver inhibit pin (Microcontroller switch off occurs only if KEY is disconnected);\n                3) ForceUpdate: \tForce the application update;'
+private = False
+
+<childs fullname="/project/CANVIEW4_Lib/MANAGEMENT">
+
+<node fullname="/project/CANVIEW4_Lib/MANAGEMENT/SetKeyMode">
+
+[GENERAL]
+bigfile = 1
+module = 'model.folderModel'
+class = 'FolderModel'
+[ATTRIBUTES]
+name = u'SetKeyMode'
+documentation = u' ========================================\n ======    Implement the SetKeyMode management   ====\n ========================================              \n\n                Description: \tSet the behaviour at KEY falling edge;\n\t\t\t\t\n                Parameters:\t                   newMode:    KEY_SHUTDOWN_ENABLE:        MCU shutdown the 5V regulator when KEY falling edge occurs;\n                                                                               KEY_SHUTDOWN_DISABLE:       Nothing occurs when KEY falling edge occurs;\n\n                Return:\t\t result:            ENUM_MODE_ERR;\n\n ================================\n ===== Example to testing this function =====\n ================================\n\n                // Global data\n                mod_key_mode\t              SINT                             0\n                mod_option_key_mode             SINT                             0\n                return_key                                    ENUM_MODE_ERR     0\n\nST:\n                // Set the behaviour at KEY falling edge\n                IF mod_key_mode = 1 THEN\n            \n                     CASE mod_option_key_mode OF\n                          0:\n                               // MCU shutdown the 5V regulator when KEY falling edge occurs\n                               SetKeyMode.newMode := KEY__SHUTDOWN_ENABLE;\n                           1:\n                               // Nothing occurs\n                               SetKeyMode.newMode := KEY__SHUTDOWN_DISABLE;\n                       END_CASE\n        \n                       SetKeyMode;\n                       return_key := SetKeyMode.result;\n                       mod_key_mode := 0;\n\n                END_IF\n\nFBD:\n                Use the corresponding block\n\n'
+private = False
+
+<childs fullname="/project/CANVIEW4_Lib/MANAGEMENT/SetKeyMode">
+
+<node fullname="/project/CANVIEW4_Lib/MANAGEMENT/SetKeyMode/SetKeyMode">
+
+[GENERAL]
+bigfile = 1
+module = 'model.POU_Model'
+class = 'POU_PROGRAM'
+[ATTRIBUTES]
+name = u'SetKeyMode'
+pou_type = 'PROGRAM'
+body_language = 'C'
+pou_comment = u'Set the behaviour at KEY falling edge'
+last_excel_import_export_filename = ''
+[VARIABLES]
+count = 2
+[VAR_0]
+name = u'newMode'
+vartype = u'ENUM_KEY_MODE'
+address = ''
+alias = False
+init = u''
+inp = True
+out = False
+temp = False
+constant = False
+comment = u'Key shutdown modality'
+winscope_min = ''
+winscope_max = ''
+winscope_unit = ''
+winscope_scale = ''
+winscope_offset = ''
+winscope_access_read = ''
+winscope_access_write = ''
+[VAR_1]
+name = u'result'
+vartype = u'ENUM_MODE_ERR'
+address = ''
+alias = False
+init = u''
+inp = False
+out = True
+temp = False
+constant = False
+comment = u'Return of function'
+winscope_min = ''
+winscope_max = ''
+winscope_unit = ''
+winscope_scale = ''
+winscope_offset = ''
+winscope_access_read = ''
+winscope_access_write = ''
+
+</node fullname="/project/CANVIEW4_Lib/MANAGEMENT/SetKeyMode/SetKeyMode">
+
+</childs fullname="/project/CANVIEW4_Lib/MANAGEMENT/SetKeyMode">
+
+</node fullname="/project/CANVIEW4_Lib/MANAGEMENT/SetKeyMode">
+
+<node fullname="/project/CANVIEW4_Lib/MANAGEMENT/PowerOff">
+
+[GENERAL]
+bigfile = 1
+module = 'model.folderModel'
+class = 'FolderModel'
+[ATTRIBUTES]
+name = u'PowerOff'
+documentation = u' ========================================\n ======    Implement the Power Off management   ======\n ========================================              \n\n                Description: \tMCU switch off occurs only if KEY is not physically connected.\n                                                        Necessarily the SetKeyMode function must be disabled;\n\t\t\t\t\n                Parameters:\t                   none;\n\n                Return:\t\tresult:            ENUM_MODE_ERR;\n\n ================================\n ===== Example to testing this function =====\n ================================\n\n                // Global data\n               return_power                                    ENUM_MODE_ERR  0\n\nST:           \n                // MCU switch off occurs only if KEY is already disconnected.\n                // Necessarily the SetKeyMode function must be disabled;\n                IF mod_power_off = 1 THEN            \n\n                     PowerOff;\n                     return_power := PowerOff.result;\n                     mod_power_off := 0;\n\n                END_IF    \n\nFBD:\n                Use the corresponding block'
+private = False
+
+<childs fullname="/project/CANVIEW4_Lib/MANAGEMENT/PowerOff">
+
+<node fullname="/project/CANVIEW4_Lib/MANAGEMENT/PowerOff/PowerOff">
+
+[GENERAL]
+bigfile = 1
+module = 'model.POU_Model'
+class = 'POU_PROGRAM'
+[ATTRIBUTES]
+name = u'PowerOff'
+pou_type = 'PROGRAM'
+body_language = 'C'
+pou_comment = u'Switch off the 5V switch regulator using the CAN1 transceiver\ninhibit pin (Microcontroller switch off occurs\nonly if KEY is disconnected)'
+last_excel_import_export_filename = ''
+[VARIABLES]
+count = 1
+[VAR_0]
+name = u'result'
+vartype = u'ENUM_MODE_ERR'
+address = ''
+alias = False
+init = u''
+inp = False
+out = True
+temp = False
+constant = False
+comment = u'Return of function'
+winscope_min = ''
+winscope_max = ''
+winscope_unit = ''
+winscope_scale = ''
+winscope_offset = ''
+winscope_access_read = ''
+winscope_access_write = ''
+
+</node fullname="/project/CANVIEW4_Lib/MANAGEMENT/PowerOff/PowerOff">
+
+</childs fullname="/project/CANVIEW4_Lib/MANAGEMENT/PowerOff">
+
+</node fullname="/project/CANVIEW4_Lib/MANAGEMENT/PowerOff">
+
+<node fullname="/project/CANVIEW4_Lib/MANAGEMENT/ForceUpdate">
+
+[GENERAL]
+bigfile = 1
+module = 'model.folderModel'
+class = 'FolderModel'
+[ATTRIBUTES]
+name = u'ForceUpdate'
+documentation = u' ==========================================\n ======    Implement the Force Update management   =====\n ======================================== ==            \n\n                Description: \tForce the application update;\n\t\t\t\t\n                Parameters:\t                   source:      UPLOAD_FROM_CAN;\n                                                                           UPLOAD_FROM_USB;\n\n                Return:\t\t none;\n\n ================================\n ===== Example to testing this function =====\n ================================\n\n                // Global data\n                mod_force_update\t              SINT         0\n                mod_option_force_update        SINT         0\n\nST:\n                // Force the application update\n                IF mod_force_update = 1 THEN\n            \n                     CASE mod_option_force_update OF\n                          0:\n                               // Set CAN for update\n                               ForceUpdate.source := UPLOAD__FROM_CAN;\n                          1:\n                               // Set USB for update\n                               ForceUpdate.source := UPLOAD__FROM_USB;\n                     END_CASE\n        \n                     ForceUpdate;\n                     mod_force_update := 0;\n\n                END_IF\n\nFBD:\n                Use the corresponding block'
+private = False
+
+<childs fullname="/project/CANVIEW4_Lib/MANAGEMENT/ForceUpdate">
+
+<node fullname="/project/CANVIEW4_Lib/MANAGEMENT/ForceUpdate/ForceUpdate">
+
+[GENERAL]
+bigfile = 1
+module = 'model.POU_Model'
+class = 'POU_PROGRAM'
+[ATTRIBUTES]
+name = u'ForceUpdate'
+pou_type = 'PROGRAM'
+body_language = 'C'
+pou_comment = u'Force the application update'
+last_excel_import_export_filename = ''
+[VARIABLES]
+count = 1
+[VAR_0]
+name = u'source'
+vartype = u'ENUM_UPDATE'
+address = ''
+alias = False
+init = u''
+inp = True
+out = False
+temp = False
+constant = False
+comment = u'Source for upload'
+winscope_min = ''
+winscope_max = ''
+winscope_unit = ''
+winscope_scale = ''
+winscope_offset = ''
+winscope_access_read = ''
+winscope_access_write = ''
+
+</node fullname="/project/CANVIEW4_Lib/MANAGEMENT/ForceUpdate/ForceUpdate">
+
+</childs fullname="/project/CANVIEW4_Lib/MANAGEMENT/ForceUpdate">
+
+</node fullname="/project/CANVIEW4_Lib/MANAGEMENT/ForceUpdate">
+
+<node fullname="/project/CANVIEW4_Lib/MANAGEMENT/Type">
+
+[GENERAL]
+bigfile = 1
+module = 'model.folderModel'
+class = 'FolderModel'
+[ATTRIBUTES]
+name = u'Type'
+documentation = u' ====================================\n ======    Implemented variable to SERIAL   ======\n ====================================\n\n                1) Enumerations; '
+private = False
+
+<childs fullname="/project/CANVIEW4_Lib/MANAGEMENT/Type">
+
+<node fullname="/project/CANVIEW4_Lib/MANAGEMENT/Type/ENUM_UPDATE">
+
+[GENERAL]
+bigfile = 1
+module = 'model.typedefModel'
+class = 'TypedefModel'
+[ATTRIBUTES]
+name = u'ENUM_UPDATE'
+
+<typedef fullname="/project/CANVIEW4_Lib/MANAGEMENT/Type/ENUM_UPDATE">
+
+
+(
+    UPLOAD__FROM_CAN	     :=      0x01,   (* Upload from CAN *)
+    UPLOAD__FROM_USB		 :=      0x02    (* Upload from USB *)
+)
+
+
+</typedef fullname="/project/CANVIEW4_Lib/MANAGEMENT/Type/ENUM_UPDATE">
+
+</node fullname="/project/CANVIEW4_Lib/MANAGEMENT/Type/ENUM_UPDATE">
+
+<node fullname="/project/CANVIEW4_Lib/MANAGEMENT/Type/ENUM_KEY_MODE">
+
+[GENERAL]
+bigfile = 1
+module = 'model.typedefModel'
+class = 'TypedefModel'
+[ATTRIBUTES]
+name = u'ENUM_KEY_MODE'
+
+<typedef fullname="/project/CANVIEW4_Lib/MANAGEMENT/Type/ENUM_KEY_MODE">
+
+
+(
+    KEY__SHUTDOWN_ENABLE	  :=      0x01,   (* MCU shutdown the 5V regulator when KEY falling edge occurs *)
+    KEY__SHUTDOWN_DISABLE     :=      0x02    (* Nothing occurs *)
+)
+
+
+</typedef fullname="/project/CANVIEW4_Lib/MANAGEMENT/Type/ENUM_KEY_MODE">
+
+</node fullname="/project/CANVIEW4_Lib/MANAGEMENT/Type/ENUM_KEY_MODE">
+
+<node fullname="/project/CANVIEW4_Lib/MANAGEMENT/Type/ENUM_MODE_ERR">
+
+[GENERAL]
+bigfile = 1
+module = 'model.typedefModel'
+class = 'TypedefModel'
+[ATTRIBUTES]
+name = u'ENUM_MODE_ERR'
+
+<typedef fullname="/project/CANVIEW4_Lib/MANAGEMENT/Type/ENUM_MODE_ERR">
+
+
+(
+    MODE__OK       :=      0,   (* No error *)
+    MODE__ERR      :=      1    (* Generic error *)
+)
+
+
+</typedef fullname="/project/CANVIEW4_Lib/MANAGEMENT/Type/ENUM_MODE_ERR">
+
+</node fullname="/project/CANVIEW4_Lib/MANAGEMENT/Type/ENUM_MODE_ERR">
+
+</childs fullname="/project/CANVIEW4_Lib/MANAGEMENT/Type">
+
+</node fullname="/project/CANVIEW4_Lib/MANAGEMENT/Type">
+
+</childs fullname="/project/CANVIEW4_Lib/MANAGEMENT">
+
+</node fullname="/project/CANVIEW4_Lib/MANAGEMENT">
+
+</childs fullname="/project/CANVIEW4_Lib">
